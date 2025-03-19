@@ -19,20 +19,20 @@ resource "azurerm_windows_web_app" "this" {
   location            = var.location
   resource_group_name = var.create_resource_group ? azurerm_resource_group.this[0].name : var.resource_group_name
   service_plan_id     = azurerm_service_plan.this.id
-  
-  https_only          = true
-  
+
+  https_only = true
+
   site_config {
-    always_on                = true
-    minimum_tls_version      = "1.2"
-    ftps_state               = "Disabled"
-    health_check_path        = "/health"
-    
+    always_on           = true
+    minimum_tls_version = "1.2"
+    ftps_state          = "Disabled"
+    health_check_path   = "/health"
+
     application_stack {
       dotnet_version = "8.0"
     }
   }
-  
+
   app_settings = {
     "ASPNETCORE_ENVIRONMENT"                = var.aspnet_environment
     "APPLICATIONINSIGHTS_CONNECTION_STRING" = var.application_insights_connection_string
@@ -42,16 +42,16 @@ resource "azurerm_windows_web_app" "this" {
     "AzureAd__TenantId"                     = var.tenant_id
     "AzureAd__ClientId"                     = var.client_id
   }
-  
+
   identity {
     type = "SystemAssigned"
   }
-  
+
   logs {
     application_logs {
       file_system_level = "Information"
     }
-    
+
     http_logs {
       file_system {
         retention_in_days = 7
@@ -59,7 +59,7 @@ resource "azurerm_windows_web_app" "this" {
       }
     }
   }
-  
+
   tags = var.tags
 }
 
@@ -69,45 +69,17 @@ resource "azurerm_app_service_virtual_network_swift_connection" "this" {
   subnet_id      = var.subnet_id
 }
 
-resource "azurerm_monitor_diagnostic_setting" "this" {
+# Web App診断設定
+resource "azurerm_monitor_diagnostic_setting" "web_app" {
   name                       = "diag-${azurerm_windows_web_app.this.name}"
   target_resource_id         = azurerm_windows_web_app.this.id
   log_analytics_workspace_id = var.log_analytics_workspace_resource_id
-  
-  enabled_log {
-    category = "AppServiceHTTPLogs"
-    
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
-  }
-  
-  enabled_log {
-    category = "AppServiceConsoleLogs"
-    
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
-  }
-  
-  enabled_log {
-    category = "AppServiceAppLogs"
-    
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
-  }
-  
-  metric {
-    category = "AllMetrics"
-    enabled  = true
-    
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
+
+  # すべてのログを有効化
+  lifecycle {
+    ignore_changes = [
+      log,
+      metric
+    ]
   }
 }

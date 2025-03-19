@@ -12,7 +12,7 @@ resource "azurerm_storage_account" "this" {
   account_tier             = var.storage_account_tier
   account_replication_type = var.storage_replication_type
   min_tls_version          = "TLS1_2"
-  
+
   blob_properties {
     delete_retention_policy {
       days = var.blob_soft_delete_retention_days
@@ -21,7 +21,7 @@ resource "azurerm_storage_account" "this" {
       days = var.container_soft_delete_retention_days
     }
   }
-  
+
   tags = var.tags
 }
 
@@ -60,7 +60,7 @@ resource "azurerm_storage_management_policy" "this" {
 resource "azurerm_storage_account_network_rules" "this" {
   count              = var.enable_network_rules ? 1 : 0
   storage_account_id = azurerm_storage_account.this.id
-  
+
   default_action             = "Deny"
   ip_rules                   = var.allowed_ip_ranges
   virtual_network_subnet_ids = var.allowed_subnet_ids

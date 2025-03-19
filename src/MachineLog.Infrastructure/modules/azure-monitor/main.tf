@@ -27,7 +27,7 @@ resource "azurerm_monitor_data_collection_rule" "this" {
   location            = var.location
   resource_group_name = var.create_resource_group ? azurerm_resource_group.this[0].name : var.resource_group_name
   kind                = "Linux"
-  
+
   destinations {
     log_analytics {
       workspace_resource_id = azurerm_log_analytics_workspace.this.id
@@ -71,26 +71,26 @@ resource "azurerm_monitor_scheduled_query_rules_alert" "error_alert" {
   name                = "alert-error-logs-${var.environment}"
   location            = var.location
   resource_group_name = var.create_resource_group ? azurerm_resource_group.this[0].name : var.resource_group_name
-  
+
   action {
     action_group           = []
     email_subject          = "MachineLog Error Alert"
     custom_webhook_payload = "{}"
   }
-  
+
   data_source_id = azurerm_log_analytics_workspace.this.id
   description    = "エラーログが検出されたときのアラート"
   enabled        = true
-  
+
   query       = "MachineLog_CL | where Severity == 'Error'"
   severity    = 1
   frequency   = 5
   time_window = 5
-  
+
   trigger {
     operator  = "GreaterThan"
     threshold = 0
   }
-  
+
   tags = var.tags
 }
