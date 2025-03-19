@@ -18,9 +18,13 @@ terraform {
 
 provider "azurerm" {
   features {}
+  use_cli                    = false
+  skip_provider_registration = true
 }
 
-provider "azuread" {}
+provider "azuread" {
+  use_cli = false
+}
 
 data "azurerm_client_config" "current" {}
 
