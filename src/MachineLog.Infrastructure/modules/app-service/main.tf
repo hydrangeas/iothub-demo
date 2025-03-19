@@ -77,18 +77,10 @@ resource "azurerm_monitor_diagnostic_setting" "web_app" {
 
   enabled_log {
     category_group = "allLogs"
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 
   metric {
     category = "AllMetrics"
     enabled  = true
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 }
