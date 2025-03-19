@@ -75,11 +75,20 @@ resource "azurerm_monitor_diagnostic_setting" "web_app" {
   target_resource_id         = azurerm_windows_web_app.this.id
   log_analytics_workspace_id = var.log_analytics_workspace_resource_id
 
-  # すべてのログを有効化
-  lifecycle {
-    ignore_changes = [
-      log,
-      metric
-    ]
+  enabled_log {
+    category_group = "allLogs"
+    retention_policy {
+      enabled = true
+      days    = 30
+    }
+  }
+
+  metric {
+    category = "AllMetrics"
+    enabled  = true
+    retention_policy {
+      enabled = true
+      days    = 30
+    }
   }
 }

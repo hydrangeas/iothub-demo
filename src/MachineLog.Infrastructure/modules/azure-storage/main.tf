@@ -5,8 +5,14 @@ resource "azurerm_resource_group" "this" {
   tags     = var.tags
 }
 
+resource "random_string" "storage_account_suffix" {
+  length  = 8
+  special = false
+  upper   = false
+}
+
 resource "azurerm_storage_account" "this" {
-  name                     = "stmachinelog${var.environment}"
+  name                     = "stmachinelog${var.environment}${random_string.storage_account_suffix.result}"
   resource_group_name      = var.create_resource_group ? azurerm_resource_group.this[0].name : var.resource_group_name
   location                 = var.location
   account_tier             = var.storage_account_tier

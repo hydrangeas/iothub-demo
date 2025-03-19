@@ -8,6 +8,10 @@ terraform {
       source  = "hashicorp/azuread"
       version = "~> 2.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0"
+    }
   }
   backend "azurerm" {
     resource_group_name  = "rg-terraform-state"
@@ -22,6 +26,8 @@ provider "azurerm" {
 }
 
 provider "azuread" {}
+
+data "azurerm_client_config" "current" {}
 
 locals {
   environment = "test"
@@ -83,7 +89,7 @@ module "app_service" {
   aspnet_environment                  = "Staging"
   log_analytics_workspace_id          = module.azure_monitor.log_analytics_workspace_id
   log_analytics_workspace_resource_id = module.azure_monitor.log_analytics_workspace_resource_id
-  tenant_id                           = module.entra_id.service_principal_object_id
+  tenant_id                           = data.azurerm_client_config.current.tenant_id
   client_id                           = module.entra_id.client_id
   tags                                = local.tags
 }

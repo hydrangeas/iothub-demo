@@ -8,6 +8,10 @@ terraform {
       source  = "hashicorp/azuread"
       version = "~> 2.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0"
+    }
   }
   backend "azurerm" {}
 }
@@ -17,6 +21,8 @@ provider "azurerm" {
 }
 
 provider "azuread" {}
+
+data "azurerm_client_config" "current" {}
 
 # モジュールの呼び出し
 module "azure_monitor" {
@@ -44,11 +50,15 @@ module "azure_storage" {
 module "app_service" {
   source = "./modules/app-service"
 
-  resource_group_name  = var.resource_group_name
-  location             = var.location
-  environment          = var.environment
-  app_service_plan_sku = var.app_service_plan_sku
-  tags                 = var.tags
+  resource_group_name                 = var.resource_group_name
+  location                            = var.location
+  environment                         = var.environment
+  app_service_plan_sku                = var.app_service_plan_sku
+  log_analytics_workspace_id          = module.azure_monitor.log_analytics_workspace_id
+  log_analytics_workspace_resource_id = module.azure_monitor.log_analytics_workspace_resource_id
+  tenant_id                           = data.azurerm_client_config.current.tenant_id
+  client_id                           = module.entra_id.client_id
+  tags                                = var.tags
 }
 
 module "entra_id" {

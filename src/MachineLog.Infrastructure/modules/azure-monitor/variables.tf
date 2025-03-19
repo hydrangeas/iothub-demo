@@ -36,3 +36,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "alert_email_address" {
+  description = "アラート通知を送信するメールアドレス"
+  type        = string
+  default     = "admin@example.com"
+}

@@ -52,7 +52,7 @@ resource "azurerm_log_analytics_saved_search" "error_logs" {
   display_name               = "エラーログ"
   query                      = "MachineLog_CL | where Severity == 'Error' | order by TimeGenerated desc"
   function_alias             = "ErrorLogs"
-  function_parameters        = "timespan=P1D"
+  function_parameters        = ["timespan=P1D"]
   log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
 }
 
@@ -62,18 +62,31 @@ resource "azurerm_log_analytics_saved_search" "machine_status" {
   display_name               = "機械ステータス"
   query                      = "MachineLog_CL | summarize LastLog=max(TimeGenerated) by MachineId_s | extend Status = iff(LastLog < ago(1h), 'Offline', 'Online')"
   function_alias             = "MachineStatus"
-  function_parameters        = ""
+  function_parameters        = []
   log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
 }
 
 # アラートルールの作成
+# アクショングループの作成
+resource "azurerm_monitor_action_group" "error_alert" {
+  name                = "ag-error-alert-${var.environment}"
+  resource_group_name = var.create_resource_group ? azurerm_resource_group.this[0].name : var.resource_group_name
+  short_name          = "ErrorAlert"
+
+  email_receiver {
+    name                    = "admin"
+    email_address           = var.alert_email_address
+    use_common_alert_schema = true
+  }
+}
+
 resource "azurerm_monitor_scheduled_query_rules_alert" "error_alert" {
   name                = "alert-error-logs-${var.environment}"
   location            = var.location
   resource_group_name = var.create_resource_group ? azurerm_resource_group.this[0].name : var.resource_group_name
 
   action {
-    action_group           = []
+    action_group           = [azurerm_monitor_action_group.error_alert.id]
     email_subject          = "MachineLog Error Alert"
     custom_webhook_payload = "{}"
   }

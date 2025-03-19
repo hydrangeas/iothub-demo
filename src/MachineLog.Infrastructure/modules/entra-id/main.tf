@@ -18,7 +18,7 @@ resource "azuread_application" "this" {
       admin_consent_description  = "Allow the application to access ${var.application_name} on behalf of the signed-in user."
       admin_consent_display_name = "Access ${var.application_name}"
       enabled                    = true
-      id                         = uuid()
+      id                         = "00000000-0000-0000-0000-000000000001"
       type                       = "User"
       user_consent_description   = "Allow the application to access ${var.application_name} on your behalf."
       user_consent_display_name  = "Access ${var.application_name}"
@@ -40,7 +40,7 @@ resource "azuread_application" "this" {
     description          = "Administrators can manage all aspects of the application"
     display_name         = "Administrator"
     enabled              = true
-    id                   = uuid()
+    id                   = "00000000-0000-0000-0000-000000000002"
     value                = "Admin"
   }
 
@@ -49,7 +49,7 @@ resource "azuread_application" "this" {
     description          = "Readers can view data but not modify"
     display_name         = "Reader"
     enabled              = true
-    id                   = uuid()
+    id                   = "00000000-0000-0000-0000-000000000003"
     value                = "Reader"
   }
 }
