@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Extensions.Logging;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -69,11 +71,21 @@ namespace MachineLog.Collector
               logging.AddConsole();
               logging.AddDebug();
               logging.AddEventSourceLogger();
-
+            })
+            .UseSerilog((hostContext, services, loggerConfiguration) =>
+            {
               // ファイルログの設定
               var logsDirectory = Path.Combine(AppContext.BaseDirectory, "logs");
               Directory.CreateDirectory(logsDirectory);
-              logging.AddFile(Path.Combine(logsDirectory, "collector-{Date}.log"));
+
+              loggerConfiguration
+                .ReadFrom.Configuration(hostContext.Configuration)
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.File(
+                  Path.Combine(logsDirectory, "collector-.log"),
+                  rollingInterval: RollingInterval.Day,
+                  outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}");
             });
   }
 }
