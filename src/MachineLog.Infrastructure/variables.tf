@@ -65,3 +65,28 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "client_id" {
+  description = "Azure サービスプリンシパルのクライアントID"
+  type        = string
+  default     = ""
+}
+
+variable "client_secret" {
+  description = "Azure サービスプリンシパルのクライアントシークレット"
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "tenant_id" {
+  description = "Azure テナントID"
+  type        = string
+  default     = ""
+}
+
+variable "subscription_id" {
+  description = "Azure サブスクリプションID"
+  type        = string
+  default     = ""
+}
