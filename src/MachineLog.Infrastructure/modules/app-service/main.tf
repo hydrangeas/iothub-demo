@@ -29,7 +29,7 @@ resource "azurerm_windows_web_app" "this" {
     health_check_path   = "/health"
 
     application_stack {
-      dotnet_version = "8.0"
+      dotnet_version = "v8.0"
     }
   }
 
