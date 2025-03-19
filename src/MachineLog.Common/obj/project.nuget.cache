@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "CUn8KkyHpG2sc/nCIrvpHK52py0gF9gsw6y6bE5wuEteSgzjl7BGdzPavKyrCw89ceFR5Bk/djehULtR9KqDFA==",
+  "success": true,
+  "projectFilePath": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/MachineLog.Common.csproj",
+  "expectedPackageFiles": [
+    "/home/akr/.nuget/packages/fluentvalidation/11.8.1/fluentvalidation.11.8.1.nupkg.sha512",
+    "/home/akr/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/home/akr/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

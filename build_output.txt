@@ -1,0 +1,23 @@
+MSBuild version 17.8.19+c3ade832a for .NET
+  Determining projects to restore...
+/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj : warning NU1902: Package 'Azure.Identity' 1.11.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9 [/mnt/c/Users/hydra/source/repos/iothub-demo/MachineLog.sln]
+  Restored /mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj (in 224 ms).
+  Restored /mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/MachineLog.Common.csproj (in 215 ms).
+  Restored /mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Unit/MachineLog.Tests.Unit.csproj (in 245 ms).
+  Restored /mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Integration/MachineLog.Tests.Integration.csproj (in 245 ms).
+/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj : warning NU1902: Package 'Azure.Identity' 1.11.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9
+  MachineLog.Common -> /mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/bin/Debug/net8.0/MachineLog.Common.dll
+  MachineLog.Collector -> /mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/bin/Debug/net8.0/MachineLog.Collector.dll
+/usr/lib/dotnet/sdk/8.0.114/Microsoft.Common.CurrentVersion.targets(4911,5): warning MSB3026: Could not copy "/home/akr/.nuget/packages/microsoft.identity.client/4.60.3/lib/net6.0/Microsoft.Identity.Client.dll" to "bin/Debug/net8.0/Microsoft.Identity.Client.dll". Beginning retry 1 in 1000ms. Unable to find the specified file.  [/mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Integration/MachineLog.Tests.Integration.csproj]
+  MachineLog.Tests.Unit -> /mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Unit/bin/Debug/net8.0/MachineLog.Tests.Unit.dll
+  MachineLog.Tests.Integration -> /mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Integration/bin/Debug/net8.0/MachineLog.Tests.Integration.dll
+
+Build succeeded.
+
+/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj : warning NU1902: Package 'Azure.Identity' 1.11.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9 [/mnt/c/Users/hydra/source/repos/iothub-demo/MachineLog.sln]
+/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj : warning NU1902: Package 'Azure.Identity' 1.11.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9
+/usr/lib/dotnet/sdk/8.0.114/Microsoft.Common.CurrentVersion.targets(4911,5): warning MSB3026: Could not copy "/home/akr/.nuget/packages/microsoft.identity.client/4.60.3/lib/net6.0/Microsoft.Identity.Client.dll" to "bin/Debug/net8.0/Microsoft.Identity.Client.dll". Beginning retry 1 in 1000ms. Unable to find the specified file.  [/mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Integration/MachineLog.Tests.Integration.csproj]
+    3 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:37.52

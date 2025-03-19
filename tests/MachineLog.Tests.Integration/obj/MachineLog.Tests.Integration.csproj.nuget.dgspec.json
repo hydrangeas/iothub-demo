@@ -1,0 +1,236 @@
+{
+  "format": 1,
+  "restore": {
+    "/mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Integration/MachineLog.Tests.Integration.csproj": {}
+  },
+  "projects": {
+    "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj",
+        "projectName": "MachineLog.Collector",
+        "projectPath": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj",
+        "packagesPath": "/home/akr/.nuget/packages/",
+        "outputPath": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/akr/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/MachineLog.Common.csproj": {
+                "projectPath": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/MachineLog.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.11.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.8.1, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.19.5, )"
+            },
+            "Serilog.Extensions.Logging.File": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.114/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/MachineLog.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/MachineLog.Common.csproj",
+        "projectName": "MachineLog.Common",
+        "projectPath": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/MachineLog.Common.csproj",
+        "packagesPath": "/home/akr/.nuget/packages/",
+        "outputPath": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/akr/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.8.1, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.114/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Integration/MachineLog.Tests.Integration.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Integration/MachineLog.Tests.Integration.csproj",
+        "projectName": "MachineLog.Tests.Integration",
+        "projectPath": "/mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Integration/MachineLog.Tests.Integration.csproj",
+        "packagesPath": "/home/akr/.nuget/packages/",
+        "outputPath": "/mnt/c/Users/hydra/source/repos/iothub-demo/tests/MachineLog.Tests.Integration/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/akr/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj": {
+                "projectPath": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Collector/MachineLog.Collector.csproj"
+              },
+              "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/MachineLog.Common.csproj": {
+                "projectPath": "/mnt/c/Users/hydra/source/repos/iothub-demo/src/MachineLog.Common/MachineLog.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.114/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
