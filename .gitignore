@@ -1,0 +1,62 @@
+# C# ビルド結果
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio ファイル
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Rider
+.idea/
+*.sln.iml
+
+# テスト結果
+TestResults/
+[Tt]est[Rr]esult*/
+*.coverage
+*.coveragexml
+
+# NuGet パッケージ
+*.nupkg
+# NuGetパッケージフォルダは無視できます
+**/[Pp]ackages/*
+# ただし、ビルドスクリプトにあるものは除外します
+!**/[Pp]ackages/build/
+# 必要に応じてこの行のコメントを解除し、NuGet.Configのsourcesパスを含めます
+#!**/[Pp]ackages/repositories.config
+
+# Terraformファイル
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
