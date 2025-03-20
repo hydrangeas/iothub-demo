@@ -29,7 +29,7 @@ resource "azurerm_windows_web_app" "this" {
     health_check_path   = "/health"
 
     application_stack {
-      dotnet_version = "8.0"
+      dotnet_version = "v8.0"
     }
   }
 
@@ -77,18 +77,10 @@ resource "azurerm_monitor_diagnostic_setting" "web_app" {
 
   enabled_log {
     category_group = "allLogs"
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 
   metric {
     category = "AllMetrics"
     enabled  = true
-    retention_policy {
-      enabled = true
-      days    = 30
-    }
   }
 }

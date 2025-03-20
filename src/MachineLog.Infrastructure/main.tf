@@ -18,9 +18,22 @@ terraform {
 
 provider "azurerm" {
   features {}
+  use_cli                    = true
+  skip_provider_registration = true
+
+  client_id       = var.client_id != "" ? var.client_id : null
+  client_secret   = var.client_secret != "" ? var.client_secret : null
+  tenant_id       = var.tenant_id != "" ? var.tenant_id : null
+  subscription_id = var.subscription_id != "" ? var.subscription_id : null
 }
 
-provider "azuread" {}
+provider "azuread" {
+  use_cli = true
+
+  client_id     = var.client_id != "" ? var.client_id : null
+  client_secret = var.client_secret != "" ? var.client_secret : null
+  tenant_id     = var.tenant_id != "" ? var.tenant_id : null
+}
 
 data "azurerm_client_config" "current" {}
 
