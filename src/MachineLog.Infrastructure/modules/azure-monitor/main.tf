@@ -36,11 +36,18 @@ resource "azurerm_monitor_data_collection_rule" "this" {
   }
 
   data_flow {
-    streams      = ["Custom-MachineLogStream"]
+    streams      = ["Microsoft-Syslog"]
     destinations = ["log-analytics-destination"]
   }
 
-  data_sources {}
+  data_sources {
+    syslog {
+      name           = "syslog-source"
+      facility_names = ["*"]
+      log_levels     = ["*"]
+      streams        = ["Microsoft-Syslog"]
+    }
+  }
 
   tags = var.tags
 }
@@ -52,7 +59,7 @@ resource "azurerm_log_analytics_saved_search" "error_logs" {
   display_name               = "エラーログ"
   query                      = "MachineLog_CL | where Severity == 'Error' | order by TimeGenerated desc"
   function_alias             = "ErrorLogs"
-  function_parameters        = ["timespan:string=P1D"]
+  function_parameters        = "timespan=P1D"
   log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
 }
 
