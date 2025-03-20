@@ -59,7 +59,7 @@ resource "azurerm_log_analytics_saved_search" "error_logs" {
   display_name               = "エラーログ"
   query                      = "MachineLog_CL | where Severity == 'Error' | order by TimeGenerated desc"
   function_alias             = "ErrorLogs"
-  function_parameters        = ["timespan"]
+  function_parameters        = ["timespan:string='P1D'"]
   log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
 }
 
