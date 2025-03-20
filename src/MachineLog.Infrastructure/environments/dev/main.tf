@@ -30,8 +30,10 @@ provider "azuread" {}
 data "azurerm_client_config" "current" {}
 
 locals {
-  environment = "dev"
-  location    = "japaneast"
+  environment         = "dev"
+  location            = "japaneast"
+  resource_group_name = "rg-iothub"
+  project_name        = "iothub"
   tags = {
     Environment = "Development"
     Project     = "MachineLog"
@@ -41,7 +43,7 @@ locals {
 }
 
 resource "azurerm_resource_group" "this" {
-  name     = "rg-machinelog-${local.environment}"
+  name     = "${local.resource_group_name}-${local.environment}"
   location = local.location
   tags     = local.tags
 }
@@ -71,10 +73,10 @@ module "azure_storage" {
 module "entra_id" {
   source = "../../modules/entra-id"
 
-  application_name     = "MachineLog"
+  application_name     = local.project_name
   environment          = local.environment
-  homepage_url         = "https://app-machinelog-${local.environment}.azurewebsites.net"
-  redirect_uris        = ["https://app-machinelog-${local.environment}.azurewebsites.net/signin-oidc"]
+  homepage_url         = "https://app-${local.project_name}-${local.environment}.azurewebsites.net"
+  redirect_uris        = ["https://app-${local.project_name}-${local.environment}.azurewebsites.net/signin-oidc"]
   create_client_secret = true
 }
 
