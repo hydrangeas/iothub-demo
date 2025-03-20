@@ -37,11 +37,18 @@ provider "azuread" {
 
 data "azurerm_client_config" "current" {}
 
+# リソースグループの作成
+resource "azurerm_resource_group" "this" {
+  name     = var.resource_group_name
+  location = var.location
+  tags     = var.tags
+}
+
 # モジュールの呼び出し
 module "azure_monitor" {
   source = "./modules/azure-monitor"
 
-  resource_group_name   = var.resource_group_name
+  resource_group_name   = azurerm_resource_group.this.name
   location              = var.location
   environment           = var.environment
   log_analytics_sku     = var.log_analytics_sku
@@ -52,7 +59,7 @@ module "azure_monitor" {
 module "azure_storage" {
   source = "./modules/azure-storage"
 
-  resource_group_name      = var.resource_group_name
+  resource_group_name      = azurerm_resource_group.this.name
   location                 = var.location
   environment              = var.environment
   storage_account_tier     = var.storage_account_tier
@@ -63,7 +70,7 @@ module "azure_storage" {
 module "app_service" {
   source = "./modules/app-service"
 
-  resource_group_name                 = var.resource_group_name
+  resource_group_name                 = azurerm_resource_group.this.name
   location                            = var.location
   environment                         = var.environment
   app_service_plan_sku                = var.app_service_plan_sku
